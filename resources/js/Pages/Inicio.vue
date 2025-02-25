@@ -105,7 +105,7 @@
     <v-col cols="12" md="3">
       <v-card class="pa-4 text-center" color="grey darken-3">
         <v-icon size="50" color="secondary">mdi-truck</v-icon>
-        <v-card-title class="text-h6">Retiro</v-card-title>
+        <v-card-title class="text-h6">Retiros</v-card-title>
         <v-card-text>
           Vamos hasta tu ubicación y recogemos los materiales reciclables.
         </v-card-text>
@@ -187,7 +187,7 @@ v-main {
 .custom_top_1 {
   margin-top: 3cm; 
 }
-
+  
 .first_tittle {
   margin-top: 3cm; 
   margin-bottom: -2cm;
