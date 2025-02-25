@@ -1,0 +1,7 @@
+/* Importaciones de Vuetify y otros estilos */
+@import 'vuetify/styles';
+
+/* Directivas de Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
