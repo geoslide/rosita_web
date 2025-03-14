@@ -135,9 +135,9 @@
               <v-img src="/images/fierro.jpg" alt="Fierro" contain height="200" class="mt-4"></v-img>
             </v-col>
             <v-col cols="12" md="6">
-              <v-img src="/images/broncee.jpg" alt="Bronce" contain height="200"></v-img>
+              <v-img src="/images/broncee.webp" alt="Bronce" contain height="200"></v-img>
               <v-img src="/images/acero.jpg" alt="Acero" contain height="200" class="mt-4"></v-img>
-              <v-img src="/images/plomo.jpg" alt="Plomo" contain height="200" class="mt-4"></v-img>
+              <v-img src="/images/residuoselectronicos.jpg" alt="Plomo" contain height="200" class="mt-4"></v-img>
             </v-col>
           </v-row>
 </v-container>
@@ -171,7 +171,7 @@ v-main {
   justify-content: center;
   align-items: center;
   text-align: center; 
-  margin-top: -65px; 
+  margin-top: -125px; 
 }
 
 .black-background {
