@@ -23,6 +23,7 @@
         "@fortawesome/fontawesome-free": "^6.7.2",
         "@mdi/font": "^7.4.47",
         "vite-plugin-vuetify": "^2.1.0",
-        "vuetify": "^3.7.0-beta.1"
+        "vuetify": "^3.7.0-beta.1",
+        "ziggy-js": "^2.6.0"
     }
 }

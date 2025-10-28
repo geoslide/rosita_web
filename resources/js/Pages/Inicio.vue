@@ -1,148 +1,166 @@
 <template>
-  <v-app>
+  <v-layout>
     <!-- Barra de navegación fija -->
     <v-app-bar app dark class="custom-navbar elevation-0">
-      <v-app-bar-nav-icon @click="drawer = !drawer" class="d-md-none"></v-app-bar-nav-icon>
-      <v-toolbar-title>Reciclajes Rositas</v-toolbar-title>
+      <!-- Botón arriba a la izquierda -->
+      <v-btn icon @click.stop="drawer = !drawer" class="mr-2">
+        <v-icon>mdi-menu</v-icon>
+      </v-btn>
+      <v-toolbar-title>Centro Lagos II</v-toolbar-title>
       <v-spacer></v-spacer>
       <div class="d-none d-md-flex">
         <v-btn text>Inicio</v-btn>
-        <v-btn text>Metales</v-btn>
         <v-btn text>Nosotros</v-btn>
         <v-btn text>Contacto</v-btn>
       </div>
     </v-app-bar>
-    <!-- Menú lateral en móviles -->
-    <v-navigation-drawer v-model="drawer" app temporary>
+    <!-- Menú lateral con select de pisos -->
+    <v-navigation-drawer v-model="drawer" temporary>
       <v-list>
-        <v-list-item @click="drawer = false">
-          <v-list-item-title>Inicio</v-list-item-title>
+        <v-list-item>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <v-btn
+              v-for="piso in pisos"
+              :key="piso"
+              color="primary"
+              @click="pisoSeleccionado = piso"
+              block
+            >
+              {{ piso }}
+            </v-btn>
+          </div>
         </v-list-item>
-        <v-list-item @click="drawer = false">
-          <v-list-item-title>Metales</v-list-item-title>
-        </v-list-item>
-        <v-list-item @click="drawer = false">
-          <v-list-item-title>Nosotros</v-list-item-title>
-        </v-list-item>
-        <v-list-item @click="drawer = false">
-          <v-list-item-title>Contacto</v-list-item-title>
-        </v-list-item>
+        <!-- Puedes agregar más opciones aquí -->
+        <v-list-item title="Inicio"></v-list-item>
+        <v-list-item title="Nosotros"></v-list-item>
+        <v-list-item title="Contacto"></v-list-item>
       </v-list>
     </v-navigation-drawer>
     <!-- Contenido principal -->
     <v-main>
-        <!-- Imagen Parallax -->
-            <v-parallax src="/images/reciclo1bw.jpg">
-              <div class="parallax-text d-flex flex-column fill-height justify-center align-center text-white">
-               <!-- Texto más grande y negrita -->
-               <h1 class="text-h2 font-weight-bold mb-4 top: -50 ">Reciclajes Rosita</h1>
-                 <h4 class="subheading"> Renueva, Recicla, Reinventa el Mundo. </h4>
-              </div>
-            </v-parallax>
-        <v-container class="black-background">
-  <!-- Título encima de las tarjetas -->
-  <v-row class="first_tittle" justify="center" align="center">
-    <v-col cols="12" class="text-center">
-      <h2 class="text-h3 font-weight-bold text-white mb-4">Nosotros</h2>
-    </v-col>
-  </v-row>
+      <!-- Imagen Parallax -->
+      <v-parallax src="/images/white.jpg">
+        <div class="parallax-text d-flex flex-column fill-height justify-center align-center text-blue">
+          <!-- Imagen del edificio centrada y responsiva -->
+          <v-img
+            src="/images/edf_1.jpg"
+            alt="Edificio 1"
+            class="edificio-img mb-4"
+            cover
+          ></v-img>
+          <h1 class="text-h2 font-weight-bold mb-4 text-outline">
+            Edificio Centro Lagos II
+          </h1>
+          <h4 class="subheading">2025 Renueva, Reinventa el Mundo.</h4>
+        </div>
+      </v-parallax>
+      <v-container class="black-background">
+        <!-- Título encima de las tarjetas -->
+        <v-row class="first_tittle" justify="center" align="center">
+          <v-col cols="12" class="text-center">
+            <h2 class="text-h3 font-weight-bold text-white mb-4 text-outline">
+              Nosotros
+            </h2>
+          </v-col>
+        </v-row>
 
-  <!-- Sección con tarjetas e imágenes intercaladas -->
-  <v-row class="custom_top_1" justify="center" align="center">    
-    <!-- Tarjeta izquierda -->
-    <v-col cols="12" md="5">
-      <v-card class="pa-4">
-        <v-card-title class="text-h5 text-center">¿Quiénes somos?</v-card-title>
-        <v-card-text class="text-h7 text-center">
-          Nos dedicamos al reciclaje de metales y otros materiales.
-          Nuestra misión es contribuir al medio ambiente y ofrecer los mejores precios por tus materiales reciclables.
-        </v-card-text>
-      </v-card>
-    </v-col>
+        <!-- Sección con tarjetas e imágenes intercaladas -->
 
-    <!-- Imagen entre tarjetas -->
-    <v-col cols="12" md="5">
-      <v-img src="/images/gentewhite.png" alt="Reciclaje en acción" contain height="250"></v-img>
-    </v-col>
+        <v-row class="custom_top_1" justify="center" align="center">
+          <!-- Tarjeta izquierda -->
+          <v-col cols="12" md="5">
+            <v-card class="pa-4">
+              <v-card-title class="text-h5 text-center">¿Quiénes somos?</v-card-title>
+              <v-card-text class="text-h7 text-center">
+                Nos dedicamos al reciclaje de metales y otros materiales.
+                Nuestra misión es contribuir al medio ambiente y ofrecer los mejores precios por tus materiales reciclables.
+              </v-card-text>
+            </v-card>
+          </v-col>
 
-    <!-- Imagen entre tarjetas -->
-    <v-col cols="12" md="5">
-      <v-img src="/images/scrapwhite.png" alt="Materiales reciclados" contain height="250"></v-img>
-    </v-col>
+          <!-- Imagen entre tarjetas -->
+          <v-col cols="12" md="5">
+            <v-img src="/images/gentewhite.png" alt="Reciclaje en acción" contain height="250"></v-img>
+          </v-col>
 
-    <!-- Tarjeta derecha -->
-    <v-col cols="12" md="5">
-      <v-card class="pa-4">
-        <v-card-title class="text-h5 text-center">¿Qué materiales reciclamos?</v-card-title>
-        <v-card-text class="text-h7 text-center">
-          Recibimos una amplia variedad de metales, incluyendo aluminio, cobre, fierro y más. 
-          Contáctanos para conocer nuestros precios y condiciones de nuestro reciclaje.
-        </v-card-text>
-      </v-card>
-    </v-col>
-  </v-row>
+          <!-- Imagen entre tarjetas -->
+          <v-col cols="12" md="5">
+            <v-img src="/images/scrapwhite.png" alt="Materiales reciclados" contain height="250"></v-img>
+          </v-col>
 
-  <v-row class="columnaservicios" justify="center" align="center">
-    <v-col cols="12" class="text-center">
-      <h2 class="text-h3 font-weight-bold text-white mb-4">Nuestros Servicios</h2>
-      <p class="text-h6 text-grey-lighten-2">
-        Nos especializamos en la compra y venta de metales. <br />
-        *Solo realizamos retiro de reciclaje, no contamos con un lugar físico para entrega.*
-      </p>
-    </v-col>
-  </v-row>
+          <!-- Tarjeta derecha -->
+          <v-col cols="12" md="5">
+            <v-card class="pa-4">
+              <v-card-title class="text-h5 text-center">¿Qué materiales reciclamos?</v-card-title>
+              <v-card-text class="text-h7 text-center">
+                Recibimos una amplia variedad de metales, incluyendo aluminio, cobre, fierro y más. 
+                Contáctanos para conocer nuestros precios y condiciones de nuestro reciclaje.
+              </v-card-text>
+            </v-card>
+          </v-col>
+        </v-row>
 
-  <!-- Ciclo de servicios -->
-  <v-row class="mt-5 justify-center" align="center">
-    <v-col cols="12" md="3">
-      <v-card class="pa-4 text-center" color="grey darken-3">
-        <v-icon size="50" color="primary">mdi-phone</v-icon>
-        <v-card-title class="text-h6">Contacto</v-card-title>
-        <v-card-text>Nos llamas o nos envías un mensaje con los materiales que deseas reciclar.</v-card-text>
-      </v-card>
-    </v-col>
+        <v-row class="columnaservicios" justify="center" align="center">
+          <v-col cols="12" class="text-center">
+            <h2 class="text-h3 font-weight-bold text-white mb-4">Nuestros Servicios</h2>
+            <p class="text-h6 text-grey-lighten-2">
+              Nos especializamos en la compra y venta de metales. <br />
+              *Solo realizamos retiro de reciclaje, no contamos con un lugar físico para entrega.*
+            </p>
+          </v-col>
+        </v-row>
 
-    <v-col cols="12" md="3">
-      <v-card class="pa-4 text-center" color="grey darken-3">
-        <v-icon size="50" color="secondary">mdi-truck</v-icon>
-        <v-card-title class="text-h6">Retiros</v-card-title>
-        <v-card-text>
-          Vamos hasta tu ubicación y recogemos los materiales reciclables.
-        </v-card-text>
-      </v-card>
-    </v-col>
+        <!-- Ciclo de servicios -->
+        <v-row class="mt-5 justify-center" align="center">
+          <v-col cols="12" md="3">
+            <v-card class="pa-4 text-center" color="grey darken-3">
+              <v-icon size="50" color="primary">mdi-phone</v-icon>
+              <v-card-title class="text-h6">Contacto</v-card-title>
+              <v-card-text>Nos llamas o nos envías un mensaje con los materiales que deseas reciclar.</v-card-text>
+            </v-card>
+          </v-col>
 
-    <v-col cols="12" md="3">
-      <v-card class="pa-4 text-center" color="grey darken-3">
-        <v-icon size="50" color="success">mdi-cash</v-icon>
-        <v-card-title class="text-h6">Pago</v-card-title>
-        <v-card-text>
-          Te pagamos de inmediato según el peso y el tipo de metal reciclado.
-        </v-card-text>
-      </v-card>
-    </v-col>
-  </v-row>
-  <v-row class="metal_tittle"justify="center" align="center">
-            <v-col cols="12" class="text-center">
-              <h2 class="text-h3 font-weight-bold text-white mb-4">Metales</h2>
-            </v-col>
-          </v-row>
-          <!-- Galería de imágenes -->
-          <v-row>
-            <v-col cols="12" md="6">
-              <v-img src="/images/aluminio.jpg" alt="Aluminio" contain height="200"></v-img>
-              <v-img src="/images/cobre.jpg" alt="Cobre" contain height="200" class="mt-4"></v-img>
-              <v-img src="/images/fierro.jpg" alt="Fierro" contain height="200" class="mt-4"></v-img>
-            </v-col>
-            <v-col cols="12" md="6">
-              <v-img src="/images/broncee.webp" alt="Bronce" contain height="200"></v-img>
-              <v-img src="/images/acero.jpg" alt="Acero" contain height="200" class="mt-4"></v-img>
-              <v-img src="/images/residuoselectronicos.jpg" alt="Plomo" contain height="200" class="mt-4"></v-img>
-            </v-col>
-          </v-row>
-</v-container>
+          <v-col cols="12" md="3">
+            <v-card class="pa-4 text-center" color="grey darken-3">
+              <v-icon size="50" color="secondary">mdi-truck</v-icon>
+              <v-card-title class="text-h6">Retiros</v-card-title>
+              <v-card-text>
+                Vamos hasta tu ubicación y recogemos los materiales reciclables.
+              </v-card-text>
+            </v-card>
+          </v-col>
+
+          <v-col cols="12" md="3">
+            <v-card class="pa-4 text-center" color="grey darken-3">
+              <v-icon size="50" color="success">mdi-cash</v-icon>
+              <v-card-title class="text-h6">Pago</v-card-title>
+              <v-card-text>
+                Te pagamos de inmediato según el peso y el tipo de metal reciclado.
+              </v-card-text>
+            </v-card>
+          </v-col>
+        </v-row>
+        <v-row class="metal_tittle"justify="center" align="center">
+          <v-col cols="12" class="text-center">
+            <h2 class="text-h3 font-weight-bold text-white mb-4">Metales</h2>
+          </v-col>
+        </v-row>
+        <!-- Galería de imágenes -->
+        <v-row>
+          <v-col cols="12" md="6">
+            <v-img src="/images/aluminio.jpg" alt="Aluminio" contain height="200"></v-img>
+            <v-img src="/images/cobre.jpg" alt="Cobre" contain height="200" class="mt-4"></v-img>
+            <v-img src="/images/fierro.jpg" alt="Fierro" contain height="200" class="mt-4"></v-img>
+          </v-col>
+          <v-col cols="12" md="6">
+            <v-img src="/images/broncee.webp" alt="Bronce" contain height="200"></v-img>
+            <v-img src="/images/acero.jpg" alt="Acero" contain height="200" class="mt-4"></v-img>
+            <v-img src="/images/residuoselectronicos.jpg" alt="Plomo" contain height="200" class="mt-4"></v-img>
+          </v-col>
+        </v-row>
+      </v-container>
     </v-main>
-  </v-app>
+  </v-layout>
 </template>
 
 <script>
@@ -151,6 +169,15 @@ export default {
   data() {
     return {
       drawer: false, // menu movil
+      pisoSeleccionado: null,
+      pisos: [
+        'Piso 1',
+        'Piso 2',
+        'Piso 3',
+        'Piso 4',
+        'Piso 5',
+        // Agrega más pisos según tu edificio
+      ],
     };
   },
 };
@@ -197,6 +224,23 @@ v-main {
   margin-top: 9cm; 
 }
 
+.text-outline {
+  text-shadow:
+    -1px -1px 0 #1e7090,  
+     1px -1px 0 #1e7090,
+    -1px  1px 0 #1e7090,
+     1px  1px 0 #1e7090;
+}
+
+.edificio-img {
+  max-width: 350px;
+  width: 100%;
+  height: 320px;
+  object-fit: contain;
+  margin: 0 auto;
+  display: block;
+}
+
 @media (max-width: 600px) {
   .parallax-text {
     margin-top: 0; 
@@ -207,6 +251,10 @@ v-main {
   }
   .parallax-text h4 {
     font-size: 0.8rem; 
+  }
+  .edificio-img {
+    max-width: 220px;
+    height: 180px;
   }
 }
 </style>
